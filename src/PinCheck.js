@@ -4,35 +4,53 @@ class PinCheck extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            pin: ''
+            securityToggle: 'text',
+            isValidPin: false
         }
-        this.handlePinChange = this.handlePinChange.bind(this)
+        this.isValidPin = this.isValidPin.bind(this)
         this.checkPin = this.checkPin.bind(this)
+        this.secureButtonToggle = this.secureButtonToggle.bind(this)
 
-    }
-
-    handlePinChange(pinInput) {
-        const newPin = pinInput
-        this.setState({ pin: newPin })
-        
     }
 
     checkPin(event) {
-        this.handlePinChange(event.target.value)
-        this.checkStrength(event.target.value)
+        
+        if (this.isValidPin(event.target.value)) {
+            console.log('passed')
+            this.setState({isValidPin: 'Passed'}) 
+        } else {
+            this.setState({isValidPin: 'Failed'}) 
+            console.log('failed')
+        }
     }
 
-    checkStrength(pin) {
-        console.log(`Pin is: ${pin}`)
-    } 
+    isValidPin(pin) {
+        if (/^1111$/.test(pin)) {
+            return false 
+        } else if (/^\d{1}\d{1}\d{1}\d{1}$/.test(pin)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    secureButtonToggle(event) {
+        if (event.target.checked) {
+            this.setState({ securityToggle: 'password' })
+        } else {
+            this.setState({ securityToggle: 'text' })
+        }
+        
+    }
     
     render() {
         return (
             <div className="Pin Checker">
-                <label >Quote: </label>
-                
-                <input type="text" onChange={this.checkPin} />
-                <span> <p>Strength: {this.state.pin}</p></span> 
+                <h3>Enter Pin:</h3>
+                <p><input type='checkbox' onClick={this.secureButtonToggle}/>Tick to Hide PIN</p>
+                <input type={this.state.securityToggle} onChange={this.checkPin} />
+                <span> <p>PIN Strength Check: {this.state.isValidPin}</p></span> 
+
             </div>
         )
     }
