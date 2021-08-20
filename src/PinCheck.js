@@ -16,11 +16,9 @@ class PinCheck extends React.Component {
     checkPin(event) {
         
         if (this.isValidPin(event.target.value)) {
-            console.log('passed')
             this.setState({isValidPin: 'Passed'}) 
         } else {
             this.setState({isValidPin: 'Failed'}) 
-            console.log('failed')
         }
     }
 
@@ -45,11 +43,12 @@ class PinCheck extends React.Component {
     
     render() {
         return (
-            <div className="Pin Checker">
-                <h3>Enter Pin:</h3>
-                <p><input type='checkbox' onClick={this.secureButtonToggle}/>Tick to Hide PIN</p>
+            <div className="pinChecker">
+                <h5>Pin isValid Check:</h5>
+                
                 <input type={this.state.securityToggle} onChange={this.checkPin} />
-                <span> <p>PIN Strength Check: {this.state.isValidPin}</p></span> 
+                <input type='checkbox' onClick={this.secureButtonToggle}/>
+                <p>Valid Pin: {this.state.isValidPin}</p>
 
             </div>
         )

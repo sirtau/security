@@ -19,7 +19,6 @@ class CreditCardChecker extends React.Component {
     }
 
     updateBank(event) {
-        console.log(event.target.value)
         this.checkBank(event.target.value)
     }
 
@@ -30,17 +29,17 @@ class CreditCardChecker extends React.Component {
             this.handleBankChange('Discover')
         } else if (/^51|^52|^53|^54|^55/.test(ccNumber)) {
             this.handleBankChange('MasterCard')
-        }else if (/^4/.test(ccNumber)) {
+        } else if (/^4/.test(ccNumber)) {
             this.handleBankChange('Visa')
-        }else {
+        } else {
             this.handleBankChange('##')
         }
     } 
     
     render() {
         return (
-            <div className="Pin Checker">
-                <label >Credit Card #: </label>
+            <div className="ccChecker">
+                <h5>Credit Card Bank Checker:</h5>
                 
                 <input type="number" onChange={this.updateBank} />
                 <span> <p>Bank: {this.state.cardNumber}</p></span> 

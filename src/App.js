@@ -7,10 +7,9 @@ import PasswordChecker from './PasswordChecker';
 function App() {
   return (
     <div className="App-header">
-
       <PinCheck />
-       <PasswordChecker />
-       <CreditCardChecker />
+      <PasswordChecker />
+      <CreditCardChecker />
     </div>
   );
 }

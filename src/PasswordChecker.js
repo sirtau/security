@@ -4,35 +4,55 @@ class PasswordChecker extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            pin: ''
+            Currentpassword: '',
+            securityToggle: 'text',
+            pwStrength: ''
         }
-        this.handlePinChange = this.handlePinChange.bind(this)
-        this.checkPin = this.checkPin.bind(this)
+        this.handlePasswordChange = this.handlePasswordChange.bind(this)
+        this.checkPassword = this.checkPassword.bind(this)
+        this.secureButtonToggle = this.secureButtonToggle.bind(this)
 
     }
 
-    handlePinChange(pinInput) {
-        const newPin = pinInput
-        this.setState({ pin: newPin })
+    handlePasswordChange(pinInput) {
+        const newPassword = pinInput
+        this.setState({ Currentpassword: newPassword })
         
     }
 
-    checkPin(event) {
-        this.handlePinChange(event.target.value)
+    checkPassword(event) {
         this.checkStrength(event.target.value)
+        
     }
 
-    checkStrength(pin) {
-        console.log(`Pin is: ${pin}`)
+    checkStrength(password) {
+        let pwLength = password.length
+        if (pwLength < 6) {
+            this.setState({pwStrength: 'weak' })
+        } else if (pwLength < 12) {
+            this.setState({pwStrength: 'medium' })
+        } else {
+            this.setState({pwStrength: 'strong' })
+        }
     } 
+
+    secureButtonToggle(event) {
+        if (event.target.checked) {
+            this.setState({ securityToggle: 'password' })
+        } else {
+            this.setState({ securityToggle: 'text' })
+        }
+        
+    }
     
     render() {
         return (
-            <div className="Pin Checker">
-                <label >Password: </label>
+            <div className="pwChecker">
+                <h5 >Password Strength Checker: </h5>
                 
-                <input type="text" onChange={this.checkPin} />
-                <span> <p>Strength: {this.state.pin}</p></span> 
+                <input type={this.state.securityToggle} onChange={this.checkPassword} />
+                <input type='checkbox' onClick={this.secureButtonToggle}/>
+                <p>Strength: {this.state.pwStrength}</p>
             </div>
         )
     }
