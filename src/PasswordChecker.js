@@ -1,6 +1,6 @@
 import React from 'react';
 
-class PinCheck extends React.Component {
+class PasswordChecker extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -29,7 +29,7 @@ class PinCheck extends React.Component {
     render() {
         return (
             <div className="Pin Checker">
-                <label >Quote: </label>
+                <label >Password: </label>
                 
                 <input type="text" onChange={this.checkPin} />
                 <span> <p>Strength: {this.state.pin}</p></span> 
@@ -38,4 +38,4 @@ class PinCheck extends React.Component {
     }
 }
 
-export default PinCheck;
+export default PasswordChecker;
