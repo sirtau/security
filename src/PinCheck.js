@@ -22,8 +22,17 @@ class PinCheck extends React.Component {
         }
     }
 
+
+
     isValidPin(pin) {
-        if (/^1111$/.test(pin)) {
+        let uniqueNum = pin
+            .split('')
+            .filter((value, index, self) => {
+                return self.indexOf(value) === index
+            })
+            .length
+
+        if (uniqueNum < 2) {
             return false 
         } else if (/^\d{1}\d{1}\d{1}\d{1}$/.test(pin)) {
             return true
@@ -38,7 +47,6 @@ class PinCheck extends React.Component {
         } else {
             this.setState({ securityToggle: 'text' })
         }
-        
     }
     
     render() {

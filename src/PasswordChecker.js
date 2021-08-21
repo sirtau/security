@@ -4,20 +4,12 @@ class PasswordChecker extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            Currentpassword: '',
             securityToggle: 'text',
             pwStrength: ''
         }
-        this.handlePasswordChange = this.handlePasswordChange.bind(this)
         this.checkPassword = this.checkPassword.bind(this)
         this.secureButtonToggle = this.secureButtonToggle.bind(this)
 
-    }
-
-    handlePasswordChange(pinInput) {
-        const newPassword = pinInput
-        this.setState({ Currentpassword: newPassword })
-        
     }
 
     checkPassword(event) {
