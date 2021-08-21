@@ -8,7 +8,6 @@ class CreditCardChecker extends React.Component {
         }
         this.checkBank = this.checkBank.bind(this)
         this.updateCard = this.updateCard.bind(this)
-
     }
 
     checkBank() {

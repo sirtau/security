@@ -9,7 +9,6 @@ class PasswordChecker extends React.Component {
         }
         this.checkPassword = this.checkPassword.bind(this)
         this.secureButtonToggle = this.secureButtonToggle.bind(this)
-
     }
 
     checkPassword(event) {
@@ -34,7 +33,6 @@ class PasswordChecker extends React.Component {
         } else {
             this.setState({ securityToggle: 'text' })
         }
-        
     }
     
     render() {

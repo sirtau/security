@@ -22,8 +22,6 @@ class PinCheck extends React.Component {
         }
     }
 
-
-
     isValidPin(pin) {
         let uniqueNum = pin
             .split('')
@@ -34,7 +32,7 @@ class PinCheck extends React.Component {
 
         if (uniqueNum < 2) {
             return false 
-        } else if (/^\d{1}\d{1}\d{1}\d{1}$/.test(pin)) {
+        } else if (/^\d{4}$/.test(pin)) {
             return true
         } else {
             return false
