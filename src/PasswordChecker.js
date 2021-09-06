@@ -12,8 +12,7 @@ class PasswordChecker extends React.Component {
     }
 
     checkPassword(event) {
-        this.checkStrength(event.target.value)
-        
+        this.checkStrength(event.target.value)        
     }
 
     checkStrength(password) {

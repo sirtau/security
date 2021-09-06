@@ -4,30 +4,30 @@ class CreditCardChecker extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            cardNumber: ''
+            bankName: ''
         }
         this.checkBank = this.checkBank.bind(this)
-        this.updateCard = this.updateCard.bind(this)
+        this.updateBank = this.updateBank.bind(this)
     }
 
-    checkBank() {
-        const testNumber = this.state.cardNumber
+    checkBank(event) {
+        const testNumber = event.target.value
         
         if (/^3[47]/.test(testNumber)) {
-            return 'AMEX'
+            this.updateBank('AMEX')
         } else if (/^6001/.test(testNumber)) {
-            return 'Discover'
+            this.updateBank('Discover')
         } else if (/^5[1-5]/.test(testNumber)) {
-            return 'MasterCard'
+            this.updateBank('MasterCard')
         } else if (/^4/.test(testNumber)) {
-            return 'Visa'
+            this.updateBank('Visa')
         } else {
-            return '##'
+            this.updateBank('##') 
         }
     } 
 
-    updateCard(event) {
-        this.setState({ cardNumber: event.target.value })
+    updateBank(bank) {
+        this.setState({ bankName: bank })
     }
     
     render() {
@@ -35,8 +35,8 @@ class CreditCardChecker extends React.Component {
             <div className="ccChecker">
                 <h5>Credit Card Bank Checker:</h5>
                 
-                <input type="number" onChange={this.updateCard} />
-                <span> <p>Bank: {this.checkBank()}</p></span> 
+                <input type="number" onChange={this.checkBank} />
+                <span> <p>Bank: {this.state.bankName}</p></span> 
             </div>
         )
     }

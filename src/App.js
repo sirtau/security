@@ -3,13 +3,18 @@ import './App.css';
 import PinCheck from './PinCheck';
 import CreditCardChecker from './CreditCardChecker';
 import PasswordChecker from './PasswordChecker';
+import StringRepeater from './StringRepeater';
+import PWCheckFunction from './PWCheckFunction';
 
 function App() {
   return (
     <div className="App-header">
-      <PinCheck />
+      <PWCheckFunction />
+      <StringRepeater />
+      <PinCheck /> 
       <PasswordChecker />
       <CreditCardChecker />
+      
     </div>
   );
 }
