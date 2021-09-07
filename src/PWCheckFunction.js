@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const PWCheckFunction = () => {
-// Declare a new state variable, which we'll call "count"
+
     const [strength, setStrength] = useState('Blank')
     const [security, setSecurity] = useState('input')
     const [pointsTotal, setPointsTotal] = useState('0')
@@ -19,7 +19,7 @@ const PWCheckFunction = () => {
     const checkStrength = (password) => {
         let pointTotal = 0
    
-        let tests = [/[a-z]/, /[A-Z]/, /[0-9]/, /[!@#$%^&*()]/, /.{8}/ , /.{12}/]
+        let tests = [/[a-z]/, /[A-Z]/, /[0-9]/, /[!@#,./<>?;':"{}=_+|$%^&*()]/, /.{8}/ , /.{12}/]
 
         tests.forEach (testToRun => {
             if (testToRun.test(password)) {pointTotal++}
@@ -47,10 +47,9 @@ const PWCheckFunction = () => {
 
     }
 
-
     return (
         <div className="pwChecker">
-            <h5>Password Strength Checker using a React Function: </h5>
+            <h5>Password Strength Checker using a Functional Component: </h5>
             
             <input className="input-box" type={security} onKeyDown={handleKeyDown} onChange={checkPassword} />
             <input className='secureToggle' type='checkbox' onClick={secureButtonToggle}/>
